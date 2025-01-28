@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ventas > Reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="list-outline" color="primary"></ion-icon>
+          <ion-select placeholder="Seleccione el tipo de reporte" [(ngModel)]="tipoReporte">
+            <ion-select-option value="ventas">Total de Ventas Realizadas</ion-select-option>
+            <ion-select-option value="productos">Productos Vendidos</ion-select-option>
+            <ion-select-option value="ingresos">Ingresos Generados</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="document-outline" color="primary" ></ion-icon>
+          <input type="file" (change)="onFileSelected($event)" />
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="clipboard-outline" color="primary"></ion-icon>
+          <ion-textarea label="Reporte" labelPlacement="floating" placeholder="Enter text" [counter]="true" maxlength="130" [clearOnEdit]="true" [(ngModel)]="contenidoReporte"></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-item>
+          <ion-icon name="call-outline" color="primary" ></ion-icon>
+          <ion-input label="Número de Destino" labelPlacement="floating" color="light"  type="number" class="custom" placeholder="000 000 000" [(ngModel)]="numeroDestino"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-tab-button (click)="enviarMensajeWhatsApp()">
+    <ion-label>Verificar</ion-label>
+  </ion-tab-button>
+</ion-content>

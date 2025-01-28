@@ -1,0 +1,67 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" side="start">
+      <ion-header>
+        <ion-toolbar color="tertiary">
+          <ion-title>Empresa generica</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-accordion-group>
+          <ion-accordion>
+            <ion-button expand="block" fill="clear" [routerLink]="['/menu/contabilidad']" slot="header">
+              Area de Contabilidad
+              <ion-badge *ngIf="totalCount() > 0" color="primary" mode="ios">
+                {{totalCount()}}
+              </ion-badge>
+            </ion-button>
+            <ion-button class="accordion-option" expand="block" slot="content">
+              Lista de Comprobantes
+            </ion-button>
+            <ion-button class="accordion-option" expand="block" fill="clear" slot="content">
+              Asientos Contables
+            </ion-button>
+            <ion-button class="accordion-option" expand="block" fill="clear" slot="content">
+              Emision de Comprobantes
+            </ion-button>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-accordion-group>
+          <ion-accordion>
+            <ion-button expand="block" fill="clear" [routerLink]="['/menu/ventas']" slot="header">
+              Area de Ventas
+            </ion-button>
+            <ion-button class="accordion-option" expand="block" [routerLink]="['/menu/ventas/presupuesto']" slot="content">
+              Presupuesto / Programacion Pago
+            </ion-button>
+            <ion-button class="accordion-option" expand="block" fill="clear" [routerLink]="['/menu/ventas/reportes']" slot="content">
+              Reportes
+            </ion-button>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-list>
+          <!-- <ion-button expand="block" fill="clear" [routerLink]="['/menu/contabilidad']">
+            Area de Contabilidad
+          </ion-button> -->
+          <ion-button expand="block" fill="clear" [routerLink]="['/menu/almacen']">
+            Control de Almacén
+          </ion-button>
+          <ion-button expand="block" fill="clear" [routerLink]="['/menu/rrhh']">
+            R.R.H.H.
+          </ion-button>
+          <ion-button expand="full" fill="clear" (click)="cerrar()">
+            Cerrar Sesión
+          </ion-button>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-header>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-router-outlet></ion-router-outlet>
+      </ion-content>
+    </div>
+  </ion-split-pane>
+</ion-app>

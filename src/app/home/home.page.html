@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <div id="todo">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Blank</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <div id="container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>
+            Sistem&#64;s Horizonte
+          </ion-card-subtitle>
+        </ion-card-header>
+  
+        <img alt="empresa logo" src="assets/iconofacturacion.png" />
+  
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-icon name="document-outline" color="primary" ></ion-icon>
+              <ion-input label="Número de RUC" labelPlacement="floating" color="light"  type="number" class="custom" placeholder="xx-xxxxxxxx-x"
+                [(ngModel)]="ruc"></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-icon name="person-outline" color="primary"></ion-icon>
+              <ion-input label="Correo electrónico" color="light" labelPlacement="floating" type="email"
+                placeholder="correo@empresa.com" errorText="Correo inválido" class="custom" email [(ngModel)]="correo"></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-icon name="key-outline" color="primary"></ion-icon>
+              <ion-input label="Contraseña"  color="light" labelPlacement="floating" type="password" class="custom" placeholder="Contraseña"
+                [(ngModel)]="password"></ion-input>
+            </ion-item>
+          </ion-list>
+  
+        </ion-card-content>
+        <ion-button shape="round" fill="outline" (click)="ingresar()">
+          Ingresar
+        </ion-button>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

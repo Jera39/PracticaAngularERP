@@ -1,0 +1,69 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+#todo{
+  height: 100%;
+  background-color: #ccc5b7;
+}
+
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  height: 100%;
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+#container ion-card-subtitle{
+  color: #ffffff;
+}
+
+#container ion-icon{
+  padding-right: 15px;
+}
+
+#container ion-card{
+  padding: 30px;
+
+  --ion-card-background: rgba(0, 0, 0, 0.2);
+  --ion-list-background: rgba(0, 0, 0, 0.2);
+  --ion-item-background: none;
+}
+
+#container ion-card-content{
+  padding: 30px;
+  
+}
+
+ion-input.custom{
+  --color: #ffffff;
+  --placeholder-color: #ddd;
+}
+
+.ion-valid.sc-ion-input-md-h {
+  --highlight-color: #e7e5ff;
+}

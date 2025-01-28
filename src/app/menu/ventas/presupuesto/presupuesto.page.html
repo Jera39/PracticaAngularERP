@@ -1,0 +1,179 @@
+<ion-tabs>
+  <ion-tab tab="home">
+    <div id="home-page">
+      <ion-header>
+        <ion-toolbar id="click-trigger">
+          <ion-title>Ventas > Presupuesto / Progracion Pago > Pagos a Clientes </ion-title>
+        </ion-toolbar>
+        <ion-popover trigger="click-trigger" triggerAction="click">
+          <ng-template>
+            <ion-content class="ion-padding">Se agrego una nueva programacion de pago</ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-header>
+      <ion-content>
+        <div class="form-prueba">
+          <form (ngSubmit)="registrarPago()">
+            <ion-item>
+              <ion-label position="floating">Cliente</ion-label>
+              <ion-input [(ngModel)]="nuevoPago.cliente" name="cliente" type="text" placeholder="Nombre del cliente"
+                required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Monto a pagar</ion-label>
+              <ion-input [(ngModel)]="nuevoPago.monto" name="monto" type="number" placeholder="Monto"
+                required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Fecha de pago</ion-label>
+              <ion-datetime [(ngModel)]="nuevoPago.fecha" name="fecha" placeholder="Seleccione una fecha"
+                required></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Forma de pago</ion-label>
+              <ion-select [(ngModel)]="nuevoPago.formaPago" name="formaPago" placeholder="Seleccione una opción"
+                required>
+                <ion-select-option value="efectivo">Efectivo</ion-select-option>
+                <ion-select-option value="transferencia">Transferencia</ion-select-option>
+                <ion-select-option value="cheque">Cheque</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-button expand="full" type="submit">Registrar Pago</ion-button>
+          </form>
+        </div>
+      </ion-content>
+    </div>
+  </ion-tab>
+  <ion-tab tab="radio">
+    <div id="radio-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Ventas > Presupuesto / Progracion Pago > Pagos a Proveedores</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="example-content">
+          <ion-item>
+            <ion-label>Listas</ion-label>
+            <ion-badge *ngIf="pagosFiltrados.length > 0" color="danger" id="click-trigger">
+              {{ pagosFiltrados.length }}
+            </ion-badge>
+          </ion-item>
+          <ion-button id="popov">
+            Listas
+            <ion-badge *ngIf="pagosFiltrados.length > 0" color="danger">
+              {{ pagosFiltrados.length }}
+            </ion-badge>
+          </ion-button>
+          <ion-popover trigger="popov" triggerAction="click">
+            <ng-template>
+              <ion-content class="ion-padding">Se agrego una nueva programacion de pago</ion-content>
+            </ng-template>
+          </ion-popover>
+        </div>
+      </ion-content>
+    </div>
+  </ion-tab>
+  <ion-tab tab="library">
+    <div id="library-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Ventas > Presupuesto / Progracion Pago > Pagos al AFP</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="example-content">
+          <div *ngIf="obtenerTransferCount() > 0">
+            <ion-button id="popov2">
+              Transferencias de pago pendientes
+              <ion-badge color="danger">
+                {{ obtenerTransferCount() }}
+              </ion-badge>
+            </ion-button>
+            <ion-popover trigger="popov2" triggerAction="click">
+              <ng-template>
+                <ion-content class="ion-padding">Se agrego una nueva programacion de pago</ion-content>
+              </ng-template>
+            </ion-popover>
+          </div>
+
+        </div>
+      </ion-content>
+    </div>
+  </ion-tab>
+  <ion-tab tab="search">
+    <div id="search-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Ventas > Presupuesto / Progracion Pago > Buscar Pagos
+            <ion-badge *ngIf="pagosFiltrados.length > 0" color="danger" id="click-trigger">
+              {{ pagosFiltrados.length }}
+            </ion-badge>
+            <ion-popover trigger="click-trigger" triggerAction="click">
+              <ng-template>
+                <ion-content class="ion-padding">Se agrego una nueva programacion de pago</ion-content>
+              </ng-template>
+            </ion-popover>
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="pagos-prueba">
+          <ion-searchbar [(ngModel)]="busqueda" (ionInput)="filtrarPagos()"
+            placeholder="Buscar Cliente"></ion-searchbar>
+          <br>
+          <div *ngIf="pagosFiltrados.length > 0">
+            <h3>Lista de Pagos</h3>
+            <ion-list>
+              <ion-item *ngFor="let pago of pagosFiltrados; let i = index">
+                <ion-label>
+                  <h2>{{ pago.cliente }}</h2>
+                  <p>Monto: {{ pago.monto }} | Fecha: {{ pago.fecha }} | Forma de Pago: {{ pago.formaPago }}</p>
+                </ion-label>
+
+                <ion-buttons slot="end">
+                  <ion-button (click)="editarPago(i)">
+                    <ion-icon name="pencil"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="eliminarPago(i)">
+                    <ion-icon name="trash"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
+            </ion-list>
+          </div>
+          <div *ngIf="pagosFiltrados.length === 0">
+            <p>No hay pagos registrados.</p>
+          </div>
+        </div>
+      </ion-content>
+    </div>
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="search">
+      <ion-badge *ngIf="pagosFiltrados.length > 0" color="danger">
+        {{ pagosFiltrados.length }}
+      </ion-badge>
+      <ion-icon name="search"></ion-icon>
+      Buscar
+    </ion-tab-button>
+
+    <ion-tab-button tab="home">
+      <ion-icon name="people"></ion-icon>
+      Clientes
+    </ion-tab-button>
+    <ion-tab-button tab="radio">
+      <ion-icon name="storefront"></ion-icon>
+      Proveedores
+    </ion-tab-button>
+    <ion-tab-button tab="library">
+      <ion-icon name="business"></ion-icon>
+      AFP
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

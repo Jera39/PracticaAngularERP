@@ -1,0 +1,130 @@
+<ion-content>
+  <ion-tabs>
+    <ion-tab tab="pagados">
+      <div id="home-pagados">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>
+              Contabilidad
+              <ion-icon name="chevron-forward"></ion-icon>
+              Pagados
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div class="tab-content">
+            <div *ngIf="pagosRealizados.length > 0">
+              <br>
+              <h3>Pagos Realizados:</h3>
+              <br>
+              <ion-list>
+                <ion-item *ngFor="let pago of pagosRealizados;let i = index">
+                  <ion-label>
+                    <h2>{{ pago?.cliente }}</h2>
+                    <p>Monto: {{ pago?.monto }} | Fecha: {{ pago?.fecha }} | Forma de Pago: {{ pago?.formaPago }}</p>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </ion-content>
+      </div>
+    </ion-tab>
+    <ion-tab tab="cheques">
+      <div id="home-cheques">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>
+              Contabilidad
+              <ion-icon name="chevron-forward"></ion-icon>
+              Cheques
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div class="tab-content">
+            <div *ngIf="obtenerLista('cheque').length > 0">
+              <br>
+              <h3>Cheques por pagar:</h3>
+              <br>
+              <ion-list>
+                <ion-item *ngFor="let pago of obtenerLista('cheque'), let i = index">
+                  <ion-label>
+                    <h2>{{ pago.cliente }}</h2>
+                    <p>Monto: {{ pago.monto }} | Fecha: {{ pago.fecha }} | Forma de Pago: {{ pago.formaPago }}</p>
+                  </ion-label>
+                  <ion-button [id]="'alerta-pago-' + i" slot="end">
+                    <ion-icon name="checkmark-done"></ion-icon>
+                  </ion-button>
+                  <ion-alert [trigger]="'alerta-pago-' + i" 
+                    header="Confirmar realización de pago"
+                    message="Estas a punto de confirmar la realización del pago. ¿Estas seguro?." 
+                    [buttons]="alertButtons" (didDismiss)="confirmCheq($event, pago)">  
+                  </ion-alert>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </ion-content>
+      </div>
+    </ion-tab>
+    <ion-tab tab="transferencias">
+      <div id="home-transferencias">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>
+              Contabilidad
+              <ion-icon name="chevron-forward"></ion-icon>
+              Transferencias
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <div class="tab-content">
+            <div *ngIf="obtenerLista('transferencia').length > 0">
+              <br>
+              <h3>Cheques por pagar:</h3>
+              <br>
+              <ion-list>
+                <ion-item *ngFor="let pago of obtenerLista('transferencia')">
+                  <ion-label>
+                    <h2>{{ pago.cliente }}</h2>
+                    <p>Monto: {{ pago.monto }} | Fecha: {{ pago.fecha }} | Forma de Pago: {{ pago.formaPago }}</p>
+                  </ion-label>
+                  <!-- <ion-button id="alerta-pago-{{pago.id}}" slot="end">
+                    <ion-icon name="checkmark-done"></ion-icon>
+                  </ion-button>
+                  <ion-alert trigger="alerta-pago-{{pago.id}}" 
+                    header="Confirmar realización de pago"
+                    message="Estas a punto de confirmar la realización del pago. ¿Estas seguro?." [buttons]="alertButtons" (didDismiss)="setResult(pago)">
+                  </ion-alert> -->
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </ion-content>
+      </div>
+    </ion-tab>
+
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="pagados">
+        <ion-icon name="cash"></ion-icon>
+        <ion-label>Pagados</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="cheques" (click)="resetCheq()">
+        <ion-icon name="card"></ion-icon>
+        <ion-badge *ngIf="obtenerCheq() > 0" color="danger">
+          {{ obtenerCheq() }}
+        </ion-badge>
+        <ion-label>Cheques</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="transferencias" (click)="resetTransfer()">
+        <ion-badge *ngIf="obtenerTransfer() > 0" color="danger">
+          {{ obtenerTransfer() }}
+        </ion-badge>
+        <ion-icon name="exit"></ion-icon>
+        <ion-label>Transferencias</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
