@@ -1,11 +1,31 @@
 ion-split-pane {
-    --side-width: 350px;
-    --side-max-width: 350px;
-  
-    --border: 1px dashed #b3baff;
-  }
+  --side-width: 350px;
+  --side-max-width: 350px;
 
-.accordion-option{
+  --border: 1px dashed #b3baff;
+}
+
+.ion-padding{
+  --background: #ede9fc;
+}
+
+.list-md {
+  background: #ede9fc;
+}
+
+ion-accordion{
+  --ion-background-color: #ede9fc;
+}
+
+// :host {
+//   --ion-background-color: #ede9fc !important;
+// }
+
+ion-button{
+  --background: #ede9fc;
+}
+
+.accordion-option {
   --background: #93b8ba;
   color: #ffffff;
 }

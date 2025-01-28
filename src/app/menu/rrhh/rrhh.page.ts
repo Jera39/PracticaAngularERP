@@ -38,25 +38,72 @@ export class RRHHPage implements OnInit {
   ubicacionProduccion: string = '';
   descripcionProduccion: string = '';
 
+  datosC: any[] = [];
+  datosDP: any[] = [];
+  datosDIS: any[] = []; 
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  guardar(){
+  guardar() {
+    const datosFinales = {
+      documento: {
+        tipoDocumento: this.tipoDocumento,
+        numeroSerie: this.numeroSerie,
+        correlativo: this.correlativo,
+        fechaEmision: this.fechaEmision,
+      },
+      anexo: {
+        tipoAnexo: this.tipoAnexo,
+        codigoAnexo: this.codigoAnexo,
+        nombreAnexo: this.nombreAnexo,
+        responsable: this.responsable,
+      },
+      productos: this.datosC,
+      produccion: this.datosDP,
+      distribucion: this.datosDIS,
+    };
 
+    console.log('Todos los datos guardados:', datosFinales);
   }
 
-  guardarProducto(){
-
+  guardarProducto() {
+    const producto = {
+      tipoProducto: this.tipoProducto,
+      codigoProducto: this.codigoProducto,
+      cantidadProducto: this.cantidadProducto,
+      precioUnitario: this.precioUnitario,
+      descripcionProducto: this.descripcionProducto,
+      fechaProduccion: this.fechaProduccion,
+    };
+    this.datosC.push(producto);
+    console.log('Producto guardado:', producto);
   }
 
-  guardarDistribucion(){
-    
+  guardarDistribucion() {
+    const distribucion = {
+      tipoDistribucion: this.tipoDistribucion,
+      cantidadDistribuida: this.cantidadDistribuida,
+      ubicacionDistribucion: this.ubicacionDistribucion,
+      descripcionDistribucion: this.descripcionDistribucion,
+      fechaDistribucion: this.fechaDistribucion,
+    };
+    this.datosDIS.push(distribucion);
+    console.log('Distribución guardada:', distribucion);
   }
 
-  guardarProduccion(){
-    
+  guardarProduccion() {
+    const produccion = {
+      tipoProduccion: this.tipoProduccion,
+      cantidadProducida: this.cantidadProducida,
+      ubicacionProduccion: this.ubicacionProduccion,
+      descripcionProduccion: this.descripcionProduccion,
+      fechaDatosProduccion: this.fechaDatosProduccion,
+    };
+    this.datosDP.push(produccion);
+    console.log('Producción guardada:', produccion);
   }
 
 }
