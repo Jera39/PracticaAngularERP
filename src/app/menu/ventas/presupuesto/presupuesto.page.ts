@@ -61,6 +61,7 @@ export class PresupuestoPage implements OnInit {
       } else {
 
         this.pagos.push({ ...this.nuevoPago });
+        this.guardarLista([{ ...this.nuevoPago }])
       }
       
       this.nuevoPago = { cliente: '', monto: '', fecha: '', formaPago: '' };
@@ -70,7 +71,6 @@ export class PresupuestoPage implements OnInit {
     }
     this.actualizarTransferCount()
     this.actualizarCheqCount()
-    this.guardarLista()
     console.log(this.obtenerTransferCount())
   }
 
@@ -99,7 +99,7 @@ export class PresupuestoPage implements OnInit {
     }
   }
 
-  guardarLista(){
-    this.webservice.setListaPagos(this.pagos)
+  guardarLista(nuevo:any[]){
+    this.webservice.setListaPagos(nuevo)
   }
 }

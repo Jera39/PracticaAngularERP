@@ -47,17 +47,23 @@ export class ServicioService {
   }
 
   setListaPagos(pagos: any[]){
-    this.ListaPagos = pagos;
+    console.log('Se actualizo la lista con: ', pagos)
+    this.ListaPagos = [...this.ListaPagos, ...pagos];
+    console.log('ahora se ve asi: ', this.ListaPagos)
   }
 
   getListaPagos(){
+    console.log('Se llama a getListaPagos:', this.ListaPagos)
     return this.ListaPagos;
   }
 
   eliminarPago(pago: any) {
-    const index = this.ListaPagos.findIndex(p => p.cliente === pago.cliente && p.monto === pago.monto && p.fecha == pago.monto);
+    const index = this.ListaPagos.findIndex(p => p.cliente === pago.cliente && p.monto === pago.monto);
     if (index !== -1) {
       this.ListaPagos.splice(index, 1);
+      console.log('Se actualizo con eliminar pago:' ,this.ListaPagos)
+    } else{
+      console.log('No se logro eliminar por que no coincide nd')
     }
   }
 }

@@ -31,8 +31,7 @@
                 <ion-row>
                   <ion-col size="12" size-md="4">
                     <ion-item>
-                      <ion-label>Tipo de Documento</ion-label>
-                      <ion-select placeholder="Seleccionar" [(ngModel)]="tipoDocumento">
+                      <ion-select label="Tipo de Documento" [(ngModel)]="tipoDocumento">
                         <ion-select-option value="boleta">Boleta de venta</ion-select-option>
                         <ion-select-option value="factura">Factura</ion-select-option>
                         <ion-select-option value="cotizacion">Cotización</ion-select-option>
@@ -41,14 +40,12 @@
                   </ion-col>
                   <ion-col size="12" size-md="4">
                     <ion-item>
-                      <ion-label>Serie</ion-label>
-                      <ion-input type="text" [(ngModel)]="numeroSerie"></ion-input>
+                      <ion-input label="Serie:" type="text" [(ngModel)]="numeroSerie"></ion-input>
                     </ion-item>
                   </ion-col>
                   <ion-col size="12" size-md="4">
                     <ion-item>
-                      <ion-label>Correlativo</ion-label>
-                      <ion-input type="number" [(ngModel)]="correlativo"></ion-input>
+                      <ion-input label="Correlativo:" type="number" [(ngModel)]="correlativo"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -73,8 +70,7 @@
                 <ion-row>
                   <ion-col size="12" size-md="4">
                     <ion-item>
-                      <ion-label>Tipo de Anexo</ion-label>
-                      <ion-select placeholder="Seleccionar" [(ngModel)]="tipoAnexo">
+                      <ion-select label="Tipo de Anexo" [(ngModel)]="tipoAnexo">
                         <ion-select-option value="anexo1">Anexo 1</ion-select-option>
                         <ion-select-option value="anexo2">Anexo 2</ion-select-option>
                         <ion-select-option value="anexo3">Anexo 3</ion-select-option>
@@ -83,22 +79,19 @@
                   </ion-col>
                   <ion-col size="12" size-md="4">
                     <ion-item>
-                      <ion-label>Código de Anexo</ion-label>
-                      <ion-input type="text" [(ngModel)]="codigoAnexo"></ion-input>
+                      <ion-input label="Código de Anexo:" type="text" [(ngModel)]="codigoAnexo"></ion-input>
                     </ion-item>
                   </ion-col>
                   <ion-col size="12" size-md="4">
                     <ion-item>
-                      <ion-label>Nombre del Anexo</ion-label>
-                      <ion-input type="text" [(ngModel)]="nombreAnexo"></ion-input>
+                      <ion-input label="Nombre del Anexo:" type="text" [(ngModel)]="nombreAnexo"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-label>Responsable</ion-label>
-                      <ion-input type="text" [(ngModel)]="responsable"></ion-input>
+                      <ion-input label="Responsable:" type="text" [(ngModel)]="responsable"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -106,7 +99,6 @@
             </ion-card-content>
           </ion-card>
 
-          <ion-button expand="block" color="primary" (click)="guardar()">Guardar</ion-button>
         </ion-content>
       </div>
     </ion-tab>
@@ -135,19 +127,17 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Tipo de Producto" placeholder="Seleccionar" [(ngModel)]="tipoProducto">
-                        <ion-select slot="end">
+                        <ion-select slot="end" [(ngModel)]="tipoProducto" name="tipoProducto">
                           <ion-select-option value="productoA">Producto A</ion-select-option>
                           <ion-select-option value="productoB">Producto B</ion-select-option>
                           <ion-select-option value="productoC">Producto C</ion-select-option>
                         </ion-select>
-                      </ion-input>
                     </ion-item>
                   </ion-col>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Código de Producto" type="text" [(ngModel)]="codigoProducto"
-                        placeholder="Introduce el código"></ion-input>
+                      <ion-input label="Código de Producto:" type="text" [(ngModel)]="codigoProducto"
+                        placeholder="Introduce el código" name="codigoProducto"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -155,14 +145,14 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Cantidad" type="number" [(ngModel)]="cantidadProducto"
-                        placeholder="Introduce la cantidad"></ion-input>
+                      <ion-input label="Cantidad:" type="number" [(ngModel)]="cantidadProducto"
+                        placeholder="Introduce la cantidad" name="cantidadProducto"></ion-input>
                     </ion-item>
                   </ion-col>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Precio Unitario" type="number" [(ngModel)]="precioUnitario"
-                        placeholder="Introduce el precio"></ion-input>
+                      <ion-input label="Precio Unitario:" type="number" [(ngModel)]="precioUnitario"
+                        placeholder="Introduce el precio" name="precioUnitario"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -170,13 +160,14 @@
                 <ion-row>
                   <ion-col size="12">
                     <ion-item>
-                      <ion-textarea label="Descripción del Producto" [(ngModel)]="descripcionProducto"
-                        placeholder="Introduce una descripción"></ion-textarea>
+                      <ion-textarea label="Descripción del Producto:" [(ngModel)]="descripcionProducto"
+                        placeholder="Introduce una descripción" name="descripcionProducto"></ion-textarea>
                     </ion-item>
                   </ion-col>
                   <ion-col size="auto">
                     <ion-label>Selecciona la Fecha</ion-label>
-                    <ion-datetime-button label="Fecha" datetime="datetime"  [(ngModel)]="fechaProduccion"></ion-datetime-button>
+                    <ion-datetime-button label="Fecha:" datetime="datetime">
+                    </ion-datetime-button>
                     <ion-modal [keepContentsMounted]="true">
                       <ng-template>
                         <ion-datetime id="datetime"></ion-datetime>
@@ -188,7 +179,6 @@
             </ion-card-content>
           </ion-card>
 
-          <ion-button expand="block" color="primary" (click)="guardarProducto()">Guardar Producto</ion-button>
         </ion-content>
       </div>
     </ion-tab>
@@ -213,11 +203,11 @@
             </ion-card-header>
             <ion-card-content>
               <ion-grid>
-          
+
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Tipo de Producción" placeholder="Seleccionar" [(ngModel)]="tipoProduccion">
+                      <ion-input label="Tipo de Producción" placeholder="Seleccionar" [(ngModel)]="tipoProduccion" name="tipoProduccion">
                         <ion-select slot="end">
                           <ion-select-option value="produccionA">Producción A</ion-select-option>
                           <ion-select-option value="produccionB">Producción B</ion-select-option>
@@ -230,36 +220,32 @@
 
                 <ion-row>
                   <ion-col size="12" size-md="6">
-                    <ion-item>
-                      <ion-label>
-                        <ion-label>Fecha de Producción</ion-label>
-                        <ion-datetime-button datetime="datetime-prod"></ion-datetime-button>
-          
-                        <ion-modal [keepContentsMounted]="true">
-                          <ng-template>
-                            <ion-datetime id="datetime-prod" presentation="date-time" [(ngModel)]="fechaDatosProduccion" [formatOptions]="{
-                              date: {
-                                weekday: 'short',
-                                month: 'long',
-                                day: '2-digit',
-                              },
-                              time: {
-                                hour: '2-digit',
-                                minute: '2-digit',
-                              },
-                            }"></ion-datetime>
-                          </ng-template>
-                        </ion-modal>
-                      </ion-label>
-                    </ion-item>
+                    <ion-label>Fecha de Producción</ion-label>
+                    <ion-datetime-button datetime="datetime-production"></ion-datetime-button>
+
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime id="datetime-production" presentation="date-time" [formatOptions]="{
+                            date: {
+                              weekday: 'short',
+                              month: 'long',
+                              day: '2-digit',
+                            },
+                            time: {
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            },
+                          }"></ion-datetime>
+                      </ng-template>
+                    </ion-modal>
                   </ion-col>
                 </ion-row>
-          
+
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Cantidad Producida" type="number" [(ngModel)]="cantidadProducida"
-                        placeholder="Introduce la cantidad"></ion-input>
+                      <ion-input label="Cantidad Producida:" type="number" [(ngModel)]="cantidadProducida"
+                        placeholder="Introduce la cantidad" name="cantidadProducida"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -267,27 +253,24 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Ubicación de Producción" type="text" [(ngModel)]="ubicacionProduccion"
-                        placeholder="Introduce la ubicación"></ion-input>
+                      <ion-input label="Ubicación de Producción:" type="text" [(ngModel)]="ubicacionProduccion"
+                        placeholder="Introduce la ubicación" name="ubicacionProduccion"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
-          
+
                 <ion-row>
                   <ion-col size="12">
                     <ion-item>
-                      <ion-textarea label="Descripción de la Producción" [(ngModel)]="descripcionProduccion"
-                        placeholder="Introduce una descripción"></ion-textarea>
+                      <ion-textarea label="Descripción de Producción:" [(ngModel)]="descripcionProduccion"
+                        placeholder="Introduce una descripción" name="descripcionProduccion"></ion-textarea>
                     </ion-item>
                   </ion-col>
                 </ion-row>
-          
+
               </ion-grid>
             </ion-card-content>
           </ion-card>
-          
-          <ion-button expand="block" color="primary" (click)="guardarProduccion()">Guardar Producción</ion-button>
-          
 
         </ion-content>
       </div>
@@ -317,7 +300,7 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Tipo de Distribución" placeholder="Seleccionar" [(ngModel)]="tipoDistribucion">
+                      <ion-input label="Tipo de Distribución" placeholder="Seleccionar" [(ngModel)]="tipoDistribucion" name="tipoDistribucion">
                         <ion-select slot="end">
                           <ion-select-option value="distribucionA">Distribución A</ion-select-option>
                           <ion-select-option value="distribucionB">Distribución B</ion-select-option>
@@ -330,14 +313,12 @@
 
                 <ion-row>
                   <ion-col size="12" size-md="6">
-                    <ion-item>
-                      <ion-label>
-                        <ion-label>Fecha de Distribución</ion-label>
-                        <ion-datetime-button datetime="datetime-dis"></ion-datetime-button>
+                    <ion-label>Fecha de Distribución</ion-label>
+                    <ion-datetime-button datetime="datetime-dis"></ion-datetime-button>
 
-                        <ion-modal [keepContentsMounted]="true">
-                          <ng-template>
-                            <ion-datetime id="datetime-dis" presentation="date-time" [(ngModel)]="fechaDistribucion" [formatOptions]="{
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime id="datetime-dis" presentation="date-time" [formatOptions]="{
                               date: {
                                 weekday: 'short',
                                 month: 'long',
@@ -348,9 +329,16 @@
                                 minute: '2-digit',
                               },
                             }"></ion-datetime>
-                          </ng-template>
-                        </ion-modal>
-                      </ion-label>
+                      </ng-template>
+                    </ion-modal>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="12" size-md="6">
+                    <ion-item>
+                      <ion-input label="Cantidad Distribuida:" type="number" [(ngModel)]="cantidadDistribuida"
+                        placeholder="Introduce la cantidad" name="cantidadDistribuida"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -358,17 +346,8 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Cantidad Distribuida" type="number" [(ngModel)]="cantidadDistribuida"
-                        placeholder="Introduce la cantidad"></ion-input>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-
-                <ion-row>
-                  <ion-col size="12" size-md="6">
-                    <ion-item>
-                      <ion-input label="Ubicación" type="text" [(ngModel)]="ubicacionDistribucion"
-                        placeholder="Introduce la ubicación"></ion-input>
+                      <ion-input label="Ubicación:" type="text" [(ngModel)]="ubicacionDistribucion"
+                        placeholder="Introduce la ubicación" name="ubicacionDistribucion"></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -376,8 +355,8 @@
                 <ion-row>
                   <ion-col size="12">
                     <ion-item>
-                      <ion-textarea label="Descripción de la Distribución" [(ngModel)]="descripcionDistribucion"
-                        placeholder="Introduce una descripción"></ion-textarea>
+                      <ion-textarea label="Descripción de Distribución:" [(ngModel)]="descripcionDistribucion"
+                        placeholder="Introduce una descripción" name="descripcionDistribucion"></ion-textarea>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -386,10 +365,15 @@
             </ion-card-content>
           </ion-card>
 
-          <ion-button expand="block" color="primary" (click)="guardarDistribucion()">Guardar Distribución</ion-button>
-
         </ion-content>
+        
       </div>
+      <!-- aqui parece funcionar solo para un tab-->
     </ion-tab>
+    <ion-footer [translucent]="true">
+      <ion-toolbar>
+        <ion-button expand="block" color="primary" (click)="guardar()">Guardar Todos los Datos</ion-button>
+      </ion-toolbar>
+    </ion-footer>
   </ion-tabs>
 </ion-content>
