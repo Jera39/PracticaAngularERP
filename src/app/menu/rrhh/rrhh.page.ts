@@ -13,7 +13,7 @@ export class RRHHPage implements OnInit {
   tipoDocumento: string = '';
   numeroSerie: string = '';
   correlativo: number = 0;
-  fechaEmision: string = '';
+  fechaEmision: any;
 
   tipoAnexo: string = '';
   codigoAnexo: string = '';
@@ -26,16 +26,16 @@ export class RRHHPage implements OnInit {
   precioUnitario: number = 0;
   descripcionProducto: string = '';
 
-  fechaProduccion: string = '';
+  fechaProduccion: any;
 
   tipoDistribucion: string = '';
-  fechaDistribucion: string = '';
+  fechaDistribucion: any;
   cantidadDistribuida: number = 0;
   ubicacionDistribucion: string = '';
   descripcionDistribucion: string = '';
 
   tipoProduccion: string = '';
-  fechaDatosProduccion: string = '';
+  fechaDatosProduccion: any;
   cantidadProducida: number = 0;
   ubicacionProduccion: string = '';
   descripcionProduccion: string = '';

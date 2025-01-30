@@ -170,7 +170,7 @@
                     </ion-datetime-button>
                     <ion-modal [keepContentsMounted]="true">
                       <ng-template>
-                        <ion-datetime id="datetime" ></ion-datetime>
+                        <ion-datetime id="datetime" [(ngModel)]="fechaProduccion" ></ion-datetime>
                       </ng-template>
                     </ion-modal>
                   </ion-col>
@@ -225,7 +225,7 @@
 
                     <ion-modal [keepContentsMounted]="true">
                       <ng-template>
-                        <ion-datetime id="datetime-production" presentation="date-time" [formatOptions]="{
+                        <ion-datetime id="datetime-production" [(ngModel)]="fechaDatosProduccion" presentation="date-time" [formatOptions]="{
                             date: {
                               weekday: 'short',
                               month: 'long',
@@ -318,7 +318,7 @@
 
                     <ion-modal [keepContentsMounted]="true">
                       <ng-template>
-                        <ion-datetime id="datetime-dis" presentation="date-time" [formatOptions]="{
+                        <ion-datetime id="datetime-dis" [(ngModel)]="fechaDistribucion" presentation="date-time"  [formatOptions]="{
                               date: {
                                 weekday: 'short',
                                 month: 'long',
