@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RRHHPage implements OnInit {
 
+  datetime: any;
+
   tipoDocumento: string = '';
   numeroSerie: string = '';
   correlativo: number = 0;
@@ -38,17 +40,19 @@ export class RRHHPage implements OnInit {
   ubicacionProduccion: string = '';
   descripcionProduccion: string = '';
 
+  datosHome: any[] = [];
   datosC: any[] = [];
   datosDP: any[] = [];
-  datosDIS: any[] = []; 
+  datosDIS: any[] = [];
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  guardar() {
-    const datosFinales = {
+
+  guardarHome() {
+    const homepage = {
       documento: {
         tipoDocumento: this.tipoDocumento,
         numeroSerie: this.numeroSerie,
@@ -61,12 +65,9 @@ export class RRHHPage implements OnInit {
         nombreAnexo: this.nombreAnexo,
         responsable: this.responsable,
       },
-      productos: this.datosC,
-      produccion: this.datosDP,
-      distribucion: this.datosDIS,
-    };
-
-    console.log('Todos los datos guardados:', datosFinales);
+    }
+    this.datosHome.push(homepage);
+    console.log('Datos principales:', this.datosHome);
   }
 
   guardarProducto() {
@@ -104,6 +105,60 @@ export class RRHHPage implements OnInit {
     };
     this.datosDP.push(produccion);
     console.log('Producción guardada:', produccion);
+  }
+
+  faltaDatos() {
+
+    if (
+      this.tipoDocumento == '' ||
+      this.numeroSerie == '' ||
+      this.correlativo == 0 ||
+      this.fechaEmision == '' ||
+      this.tipoAnexo == '' ||
+      this.codigoAnexo == '' ||
+      this.nombreAnexo == '' ||
+      this.responsable == '' ||
+      this.tipoProducto == '' ||
+      this.codigoProducto == '' ||
+      this.cantidadProducto == 0 ||
+      this.precioUnitario == 0 ||
+      this.descripcionProducto == '' ||
+      this.fechaProduccion == ''
+    ) {
+      console.log('Faltan datos')
+      return true;
+    } else {
+      const datos = [
+        this.tipoDocumento,
+        this.numeroSerie,
+      this.correlativo,
+      this.fechaEmision,
+      this.tipoAnexo,
+      this.codigoAnexo,
+      this.nombreAnexo,
+      this.responsable,
+      ]
+      console.log('Estan todos los datos: ', datos)
+      this.guardarHome()
+      return false;
+    }
+  }
+  
+  guardar() {
+    if (!this.faltaDatos()) {
+      const datosFinales = {
+        hommie: this.datosHome, 
+        // productos: this.datosC,
+        // produccion: this.datosDP,
+        // distribucion: this.datosDIS,
+      };
+
+      console.log('Todos los datos guardados:', datosFinales);
+    } else {
+      alert('Faltan datos por completar. Por favor, asegúrese de llenar todos los campos.');
+      console.log('No funciona tmr:');
+    }
+
   }
 
 }
