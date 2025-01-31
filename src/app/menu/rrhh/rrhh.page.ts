@@ -45,6 +45,9 @@ export class RRHHPage implements OnInit {
   datosDP: any[] = [];
   datosDIS: any[] = [];
 
+  missHome: number = 0;
+  missC: number = 0;
+
   constructor() { }
 
   ngOnInit() {
@@ -107,8 +110,7 @@ export class RRHHPage implements OnInit {
     console.log('Producción guardada:', produccion);
   }
 
-  faltaDatos() {
-
+  missingHome() {
     if (
       this.tipoDocumento == '' ||
       this.numeroSerie == '' ||
@@ -117,13 +119,39 @@ export class RRHHPage implements OnInit {
       this.tipoAnexo == '' ||
       this.codigoAnexo == '' ||
       this.nombreAnexo == '' ||
-      this.responsable == '' ||
+      this.responsable == '') {
+      this.missHome = 1;
+      console.log('Faltan datos del Home')
+      return true
+    } else {
+      this.missHome = 0;
+      console.log('No faltan datos del Home')
+      return false
+    }
+  }
+
+  missingC() {
+    if (
       this.tipoProducto == '' ||
       this.codigoProducto == '' ||
       this.cantidadProducto == 0 ||
       this.precioUnitario == 0 ||
       this.descripcionProducto == '' ||
-      this.fechaProduccion == ''
+      this.fechaProduccion == '') {
+      this.missC = 1;
+      console.log('Faltan datos del C')
+      return true
+    } else {
+      console.log('No faltan datos del C')
+      this.missC = 0;
+      return false
+    }
+  }
+
+  faltaDatos() {
+    if (
+      this.missingHome() == true ||
+      this.missingC() == true
     ) {
       console.log('Faltan datos')
       return true;
@@ -131,29 +159,69 @@ export class RRHHPage implements OnInit {
       const datos = [
         this.tipoDocumento,
         this.numeroSerie,
-      this.correlativo,
-      this.fechaEmision,
-      this.tipoAnexo,
-      this.codigoAnexo,
-      this.nombreAnexo,
-      this.responsable,
+        this.correlativo,
+        this.fechaEmision,
+        this.tipoAnexo,
+        this.codigoAnexo,
+        this.nombreAnexo,
+        this.responsable,
       ]
       console.log('Estan todos los datos: ', datos)
       this.guardarHome()
+      this.guardarProducto()
+      this.guardarProduccion()
+      this.guardarDistribucion()
       return false;
     }
   }
-  
+
+  cleanAll() {
+    this.datosHome = [];
+    this.datosDP = [];
+    this.datosC = [];
+    this.datosDIS = [];
+
+    this.tipoDocumento = '';
+    this.numeroSerie = '';
+    this.correlativo = 0;
+    this.fechaEmision = '';
+    this.tipoAnexo = '';
+    this.codigoAnexo = '';
+    this.nombreAnexo = '';
+    this.responsable = '';
+    this.tipoProducto = '';
+    this.codigoProducto = '';
+    this.cantidadProducto = 0;
+    this.precioUnitario = 0;
+    this.descripcionProducto = '';
+    this.fechaProduccion = '';
+    this.tipoDistribucion = '';
+    this.fechaDistribucion = '';
+    this.cantidadDistribuida = 0;
+    this.ubicacionDistribucion = '';
+    this.descripcionDistribucion = '';
+    this.tipoProduccion = '';
+    this.fechaDatosProduccion = '';
+    this.cantidadProducida = 0;
+    this.ubicacionProduccion = '';
+    this.descripcionProduccion = '';
+
+    this.missC = 0;
+    this.missHome = 0;
+  }
+
   guardar() {
     if (!this.faltaDatos()) {
       const datosFinales = {
-        hommie: this.datosHome, 
-        // productos: this.datosC,
-        // produccion: this.datosDP,
-        // distribucion: this.datosDIS,
+        hommie: this.datosHome,
+        productos: this.datosC,
+        produccion: this.datosDP,
+        distribucion: this.datosDIS,
       };
-
       console.log('Todos los datos guardados:', datosFinales);
+      alert('Se guardaron los datos correctamente!!')
+      this.cleanAll();
+
     } else {
       alert('Faltan datos por completar. Por favor, asegúrese de llenar todos los campos.');
       console.log('No funciona tmr:');

@@ -2,10 +2,16 @@
   <ion-tabs>
     <ion-tab-bar slot="top">
       <ion-tab-button tab="home">
+        <ion-badge *ngIf="missHome > 0" color="danger">
+          !
+        </ion-badge>
         <ion-icon name="home-outline"></ion-icon>
         <ion-label>Producción</ion-label>
       </ion-tab-button>
       <ion-tab-button tab="C">
+        <ion-badge *ngIf="missC > 0" color="danger">
+          !
+        </ion-badge>
         <ion-icon name="list-outline"></ion-icon>
         <ion-label>C</ion-label>
       </ion-tab-button>
@@ -127,11 +133,11 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                        <ion-select slot="end" [(ngModel)]="tipoProducto" name="tipoProducto">
-                          <ion-select-option value="productoA">Producto A</ion-select-option>
-                          <ion-select-option value="productoB">Producto B</ion-select-option>
-                          <ion-select-option value="productoC">Producto C</ion-select-option>
-                        </ion-select>
+                      <ion-select slot="end" [(ngModel)]="tipoProducto" name="tipoProducto">
+                        <ion-select-option value="productoA">Producto A</ion-select-option>
+                        <ion-select-option value="productoB">Producto B</ion-select-option>
+                        <ion-select-option value="productoC">Producto C</ion-select-option>
+                      </ion-select>
                     </ion-item>
                   </ion-col>
                   <ion-col size="12" size-md="6">
@@ -170,13 +176,13 @@
                     </ion-datetime-button>
                     <ion-modal [keepContentsMounted]="true">
                       <ng-template>
-                        <ion-datetime id="datetime" [(ngModel)]="fechaProduccion" ></ion-datetime>
+                        <ion-datetime id="datetime" [(ngModel)]="fechaProduccion"></ion-datetime>
                       </ng-template>
                     </ion-modal>
                   </ion-col>
                 </ion-row>
               </ion-grid>
-            </ion-card-content> 
+            </ion-card-content>
           </ion-card>
 
         </ion-content>
@@ -207,7 +213,8 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Tipo de Producción" placeholder="Seleccionar" [(ngModel)]="tipoProduccion" name="tipoProduccion">
+                      <ion-input label="Tipo de Producción" placeholder="Seleccionar" [(ngModel)]="tipoProduccion"
+                        name="tipoProduccion">
                         <ion-select slot="end">
                           <ion-select-option value="produccionA">Producción A</ion-select-option>
                           <ion-select-option value="produccionB">Producción B</ion-select-option>
@@ -225,7 +232,8 @@
 
                     <ion-modal [keepContentsMounted]="true">
                       <ng-template>
-                        <ion-datetime id="datetime-production" [(ngModel)]="fechaDatosProduccion" presentation="date-time" [formatOptions]="{
+                        <ion-datetime id="datetime-production" [(ngModel)]="fechaDatosProduccion"
+                          presentation="date-time" [formatOptions]="{
                             date: {
                               weekday: 'short',
                               month: 'long',
@@ -300,7 +308,8 @@
                 <ion-row>
                   <ion-col size="12" size-md="6">
                     <ion-item>
-                      <ion-input label="Tipo de Distribución" placeholder="Seleccionar" [(ngModel)]="tipoDistribucion" name="tipoDistribucion">
+                      <ion-input label="Tipo de Distribución" placeholder="Seleccionar" [(ngModel)]="tipoDistribucion"
+                        name="tipoDistribucion">
                         <ion-select slot="end">
                           <ion-select-option value="distribucionA">Distribución A</ion-select-option>
                           <ion-select-option value="distribucionB">Distribución B</ion-select-option>
@@ -318,7 +327,8 @@
 
                     <ion-modal [keepContentsMounted]="true">
                       <ng-template>
-                        <ion-datetime id="datetime-dis" [(ngModel)]="fechaDistribucion" presentation="date-time"  [formatOptions]="{
+                        <ion-datetime id="datetime-dis" [(ngModel)]="fechaDistribucion" presentation="date-time"
+                          [formatOptions]="{
                               date: {
                                 weekday: 'short',
                                 month: 'long',
@@ -366,13 +376,14 @@
           </ion-card>
 
         </ion-content>
-        
+
       </div>
-      <!-- aqui parece funcionar solo para un tab-->
+      <!-- aqui parece funcionar solo para un tab podria servir para mi proximo proyecto-->
     </ion-tab>
     <ion-footer [translucent]="true">
       <ion-toolbar>
-        <ion-button expand="block" color="primary" (click)="guardar()">Guardar Todos los Datos</ion-button>
+        <ion-button expand="block" color="primary" (click)="guardar()">Guardar Todos los
+          Datos</ion-button>
       </ion-toolbar>
     </ion-footer>
   </ion-tabs>
