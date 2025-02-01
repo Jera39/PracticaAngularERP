@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicioService } from 'src/app/service/servicio.service';
 
 @Component({
   selector: 'app-rrhh',
@@ -48,7 +49,7 @@ export class RRHHPage implements OnInit {
   missHome: number = 0;
   missC: number = 0;
 
-  constructor() { }
+  constructor( private service: ServicioService) { }
 
   ngOnInit() {
   }
@@ -218,8 +219,10 @@ export class RRHHPage implements OnInit {
         produccion: this.datosDP,
         distribucion: this.datosDIS,
       };
-      console.log('Todos los datos guardados:', datosFinales);
+      //console.log('Todos los datos guardados:', datosFinales);
+      console.log('Todos los datos guardados:'+JSON.stringify(datosFinales))
       alert('Se guardaron los datos correctamente!!')
+      this.service.setProductos([datosFinales])
       this.cleanAll();
 
     } else {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicioService } from 'src/app/service/servicio.service';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-almacen',
@@ -8,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlmacenPage implements OnInit {
 
-  constructor() { }
+  constructor(private servicio : ServicioService) { }
+
+  listaProductos: any[] = [];
 
   ngOnInit() {
   }
+
+  obtenerProductos(){
+    this.listaProductos = this.servicio.getProductos()
+    return this.listaProductos.length
+  }
+
 
 }

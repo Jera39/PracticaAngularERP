@@ -9,6 +9,7 @@ export class ServicioService {
   private AcountTransfer: number = 0;
   private AcountCheq: number = 0;
   private ListaPagos: any[] = [];
+  private ListaProductos: any[] = [];
 
 
   constructor() { }
@@ -65,5 +66,13 @@ export class ServicioService {
     } else{
       console.log('No se logro eliminar por que no coincide nd')
     }
+  }
+
+  setProductos(producto:any[]){
+    this.ListaProductos = [...this.ListaProductos, ...producto]
+  }
+
+  getProductos(){
+    return this.ListaProductos
   }
 }
