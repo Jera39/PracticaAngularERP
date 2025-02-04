@@ -5,22 +5,41 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header>
-    Lista de Productos
-  </ion-header>
-  <ion-content>
-      <!-- <div *ngIf="obtenerProductos() > 0">
-        <br>
-        <h3>Lista de Productos:</h3>
-        <br>
-        <ion-list>
-          <ion-item *ngFor="let pago of obtenerLista('cheque'), let i = index">
-            <ion-label>
-              <h2>{{ pago.cliente }}</h2>
-              <p>Monto: {{ pago.monto }} | Fecha: {{ pago.fecha }} | Forma de Pago: {{ pago.formaPago }}</p>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </div> -->
-  </ion-content>
+  <div id="contenido">
+
+    <ion-content>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Pogramaciones de Pago</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-vertical-bar-chart></app-vertical-bar-chart>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Ganancias obtenidas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-pie-chart></app-pie-chart>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Ganancias Perdidas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-pie-grid></app-pie-grid>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Ganancias Perdidas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-horizontal-bar-chart></app-horizontal-bar-chart>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </div>
 </ion-content>

@@ -75,4 +75,37 @@ export class ServicioService {
   getProductos(){
     return this.ListaProductos
   }
+
+  setVerticalBC(){
+
+  }
+
+  obtenerResumenPorFormaPago() {
+    const resumen = [];
+
+    // Agrupar los pagos por forma de pago y sumar los montos.
+    const pagosAgrupados = this.ListaPagos.reduce((acc, pago) => {
+      const monto = parseFloat(pago.monto);
+
+      if (isNaN(monto)) return acc; // Si el monto no es un número, ignorar ese pago.
+
+      if (acc[pago.formaPago]) {
+        acc[pago.formaPago] += monto;  // Sumar el monto si ya existe esa forma de pago.
+      } else {
+        acc[pago.formaPago] = monto;  // Si no existe, iniciar la suma con el monto del pago.
+      }
+
+      return acc;
+    }, {});
+
+    // Convertir el objeto de pagos agrupados en un array de objetos con la estructura deseada.
+    for (const formaPago in pagosAgrupados) {
+      resumen.push({
+        name: formaPago,
+        value: pagosAgrupados[formaPago]
+      });
+    }
+
+    return resumen;
+  }
 }

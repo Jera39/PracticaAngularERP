@@ -27,7 +27,7 @@
     "@capacitor/keyboard": "6.0.3",
     "@capacitor/status-bar": "6.0.2",
     "@ionic/angular": "^8.0.0",
-    "apexcharts": "^4.4.0",
+    "@swimlane/ngx-charts": "^22.0.0-alpha.0",
     "chart.js": "^4.4.7",
     "ionicons": "^7.0.0",
     "ng-apexcharts": "^1.15.0",
@@ -66,3 +66,4 @@
   },
   "description": "An Ionic project"
 }
+  

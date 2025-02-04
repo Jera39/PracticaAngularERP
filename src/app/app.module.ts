@@ -6,15 +6,22 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NgApexchartsModule } from 'ng-apexcharts';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { VerticalBarChartComponent } from './components/vertical-bar-chart/vertical-bar-chart.component';
+import { PieGridComponent } from './components/pie-grid/pie-grid.component';
+import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/horizontal-bar-chart.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent
+  ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    NgApexchartsModule,
+    PieChartComponent,
+    VerticalBarChartComponent,
+    PieGridComponent,
+    HorizontalBarChartComponent
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
