@@ -10,6 +10,7 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { VerticalBarChartComponent } from './components/vertical-bar-chart/vertical-bar-chart.component';
 import { PieGridComponent } from './components/pie-grid/pie-grid.component';
 import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/horizontal-bar-chart.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [AppComponent
@@ -21,7 +22,8 @@ import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/h
     PieChartComponent,
     VerticalBarChartComponent,
     PieGridComponent,
-    HorizontalBarChartComponent
+    HorizontalBarChartComponent,
+    LineChartComponent,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
