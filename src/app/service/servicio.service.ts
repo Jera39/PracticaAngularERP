@@ -131,48 +131,36 @@ export class ServicioService {
   registrarPagoGrafico() {
     const resumen = [];
   
-    // Agrupamos los pagos por forma de pago
     const pagosAgrupados = this.ListaPagos.reduce((acc: { [key: string]: { name: string, value: number }[] }, pago) => {
       const monto = parseFloat(pago.monto);
   
-      // Verificamos si el monto es válido
       if (isNaN(monto)) return acc;
   
-      // Si no existe la forma de pago en el acumulador, la inicializamos
       if (!acc[pago.formaPago]) {
         acc[pago.formaPago] = [];
       }
   
-      // Verificamos si el cliente ya existe en esa forma de pago
-      const clienteExistente = acc[pago.formaPago].find((c) => c.name === pago.cliente);
+      const fechaExistente = acc[pago.formaPago].find((c) => c.name === pago.fecha);
   
-      if (clienteExistente) {
-        // Si el cliente existe, simplemente sumamos el monto al valor existente
-        clienteExistente.value += monto;
+      if (fechaExistente) {
+        fechaExistente.value += monto;
       } else {
-        // Si el cliente no existe, lo agregamos con su monto
-        acc[pago.formaPago].push({ name: pago.cliente, value: monto });
+        acc[pago.formaPago].push({ name: pago.fecha, value: monto });
       }
-  
       return acc;
     }, {});
   
-    // Convertimos los datos agrupados a la estructura que necesita el gráfico
     for (const formaPago in pagosAgrupados) {
       resumen.push({
         name: formaPago,
         series: pagosAgrupados[formaPago]
       });
     }
-  
-    // Actualizamos los datos de gráfico
+
     this.datosGraficoPorFormaDePago = resumen;
-  
-    // Ahora el resumen tendrá la estructura que necesitas para el gráfico
     console.log('Resumen final para gráfico:', JSON.stringify(resumen, null, 2));
-  
     return resumen;
-  }
+}
   
 
 

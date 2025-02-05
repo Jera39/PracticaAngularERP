@@ -19,7 +19,7 @@ export class LineChartComponent  implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Cliente';
+  xAxisLabel: string = 'Fechas';
   yAxisLabel: string = 'Monto';
   timeline: boolean = true;
 
