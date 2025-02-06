@@ -30,6 +30,7 @@
     "@swimlane/ngx-charts": "^22.0.0-alpha.0",
     "chart.js": "^4.4.7",
     "ionicons": "^7.0.0",
+    "Login": "file:",
     "ng-apexcharts": "^1.15.0",
     "ng2-charts": "^8.0.0",
     "rxjs": "~7.8.0",
@@ -66,4 +67,3 @@
   },
   "description": "An Ionic project"
 }
-  
